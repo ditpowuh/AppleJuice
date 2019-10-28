@@ -20,9 +20,12 @@ module.exports = {
       return err;
     }
   },
-  length: function (string) {
+  length: function (input) {
     try {
-      return string.length;
+      if (!input) {
+        throw "AppleJuiceError: Input(s) needed (requires one)"; 
+      }
+      return input.length;
     }
     catch(err) {
       return err;
@@ -36,9 +39,9 @@ module.exports = {
       return err;
     }
   },
-  round: function(number) {
+  round: function(input) {
     try {
-      return Math.round(number);
+      return Math.round(input);
     }
     catch(err) {
       return err;
@@ -57,7 +60,7 @@ module.exports = {
       if (!input1 || !input2) {
         throw "AppleJuiceError: Input(s) needed (requires two)";
       }
-      if (input1 != "string") {
+      if (typeof input1 != "string") {
         throw "AppleJuiceError: First input incorrect type (string)";
       }
       if (typeof input2 == "number" || typeof input2 == "boolean" || typeof input2 == "object") {
